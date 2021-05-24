@@ -23,6 +23,11 @@ export class Profile extends React.Component {
     this.loadUserData();
   }
 
+  componentWillUnumount(){
+    // use cancel fetch on a fetchUserData instance when the component is about to unmount. 
+    cancelFetch(this.fetchID);
+  }
+
   render() {
     // isLoading should only be true when state UserData is null
     const isLoading = this.state.userData===null;
