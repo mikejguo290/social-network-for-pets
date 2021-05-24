@@ -28,9 +28,10 @@ const FAKE_USER_DATA = {
     },
   };
   
-  const timeoutByFetchId = new Map();
+  const timeoutByFetchId = new Map(); // like a python dict of key:value pairs. remembers insertion order.
   
   class Fetch {
+    // define fetch._id to be a unique identifier based on its time of creations.
     constructor() {
       Object.defineProperty(this, '_id', {
         value: Date.now() + Math.random().toString().substr(2),
@@ -49,7 +50,7 @@ const FAKE_USER_DATA = {
   
     const delay = Math.floor(Math.random() * 1000) + 500;
     const timeout = setTimeout(() => {
-      timeoutByFetchId.delete(fetch._id);
+      timeoutByFetchId.delete(fetch._id); // delete initial fetch._id key:value pair? then fill it in with data and associate new fetch._id with timeout promise at timeoutByFetchId.set()
       callback(FAKE_USER_DATA[username]);
     }, delay);
   

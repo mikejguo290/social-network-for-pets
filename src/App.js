@@ -9,9 +9,7 @@ class App extends React.Component {
       currentUsername: null,
     };
     this.handleChoose = this.handleChoose.bind(this);
-    this.handleReturnToDirectoryClick = this.handleReturnToDirectoryClick.bind(
-      this
-    );
+    this.handleReturnToDirectoryClick = this.handleReturnToDirectoryClick.bind(this);
   }
 
   handleChoose(newUsername) {
