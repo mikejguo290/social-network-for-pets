@@ -43,7 +43,7 @@ export class Profile extends React.Component {
     if (isLoading){
       bio = 'Loafing... '
     }else{
-      name=this.state.userData.bio
+      bio=this.state.userData.bio
     }
 
     let friends;
@@ -52,10 +52,13 @@ export class Profile extends React.Component {
     }else{
       friends=this.state.userData.friends;
     }
-    
+
     return (
       <div className={className}>
-        <div className="profile-picture"></div>
+        <div className="profile-picture">{ !isLoading && (
+          <img src={this.state.userData.profilePictureUrl} alt='' />
+          )}
+        </div>
         <div className="profile-body">
           <h2>{name}</h2>
           <h3>@{this.props.username}</h3>
