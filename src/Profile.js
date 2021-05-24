@@ -3,6 +3,11 @@ import { fetchUserData, cancelFetch } from './dataFetcher';
 import { Userlist } from './Userlist';
 
 export class Profile extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={userData: null} // used to represent a Profile without any data.
+  }
+  
   render() {
     const isLoading = true;
 
