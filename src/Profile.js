@@ -7,8 +7,9 @@ export class Profile extends React.Component {
     super(props);
     this.state={userData: null} // used to represent a Profile without any data.
   }
+
   loadUserData(){
-    // 1. sets userData state to null while the data is loading. 
+    // 1. sets userData state to null while (or is it before?)the data is loaded. 
     this.setState({ userData: null});
  
     // 2. once it is loaded. we update it. 
@@ -16,7 +17,12 @@ export class Profile extends React.Component {
      this.setState({ userData: userData});
      });
    }
-   
+  
+  componentDidMount(){
+    // calls data loading method after the component loads.
+    this.loadUserData();
+  }
+
   render() {
     const isLoading = true;
 
