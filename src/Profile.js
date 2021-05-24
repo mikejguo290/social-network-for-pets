@@ -22,7 +22,15 @@ export class Profile extends React.Component {
     // calls data loading method after the component loads.
     this.loadUserData();
   }
-
+  componentDidUpdate(prevProps){
+    /* if props.username , passed down from App.js did change, then the link must have been clicked. 
+    the App.js's state has changed. Props linked to App's state will change as well, the Profile component will then update
+    what needs to happen is 1. cancel all current fetch requests adn 2. call loadUserData again. */
+    if (this.props.username !== prevProps.username){
+      cancelFetch(this.fetchID);
+      this.loadUserData();
+    }
+  }
   componentWillUnumount(){
     // use cancel fetch on a fetchUserData instance when the component is about to unmount. 
     cancelFetch(this.fetchID);
