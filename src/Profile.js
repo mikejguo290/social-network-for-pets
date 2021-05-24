@@ -41,11 +41,18 @@ export class Profile extends React.Component {
 
     let bio;
     if (isLoading){
-      bio ="Loafing... "
+      bio = 'Loafing... '
     }else{
       name=this.state.userData.bio
     }
 
+    let friends;
+    if (isLoading){
+      friends=[];
+    }else{
+      friends=this.state.userData.friends;
+    }
+    
     return (
       <div className={className}>
         <div className="profile-picture"></div>
@@ -54,7 +61,7 @@ export class Profile extends React.Component {
           <h3>@{this.props.username}</h3>
           <p>{bio}</p>
           <h3>My friends</h3>
-          <Userlist usernames={[]} onChoose={this.props.onChoose} />
+          <Userlist usernames={friends} onChoose={this.props.onChoose} />
         </div>
       </div>
     );
