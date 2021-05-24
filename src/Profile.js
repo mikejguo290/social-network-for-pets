@@ -24,7 +24,8 @@ export class Profile extends React.Component {
   }
 
   render() {
-    const isLoading = true;
+    // isLoading should only be true when state UserData is null
+    const isLoading = this.state.userData===null;
 
     let className = 'Profile';
     if (isLoading) {
