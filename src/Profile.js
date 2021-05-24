@@ -7,7 +7,16 @@ export class Profile extends React.Component {
     super(props);
     this.state={userData: null} // used to represent a Profile without any data.
   }
-  
+  loadUserData(){
+    // 1. sets userData state to null while the data is loading. 
+    this.setState({ userData: null});
+ 
+    // 2. once it is loaded. we update it. 
+    this.fetchID = fetchUserData(this.props.username, (userData)=>{
+     this.setState({ userData: userData});
+     });
+   }
+   
   render() {
     const isLoading = true;
 
